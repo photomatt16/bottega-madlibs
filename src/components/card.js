@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import Input from './input';
+import Content from './content';
 
 class Card extends Component {
 
@@ -23,16 +24,22 @@ class Card extends Component {
             adjFour: '',
             nounThree: '',
             celebFour: '',
-            adjFive: ''
+            adjFive: '',
+            contentVisible: false
         }
 
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
     }
 
     handleInputChange(event) {
         this.setState({ [event.target.name]: event.target.value })
     }
 
+    handleFormSubmit(event) {
+        event.preventDefault()
+        this.setState({ contentVisible: !this.state.contentVisible })
+    }
     render() { 
         const inputData = [
             {title: 'Color', state: this.state.color, name: 'color'},
@@ -41,7 +48,7 @@ class Card extends Component {
             {title: 'Celebrity', state: this.state.celebOne, name: 'celebOne'},
             
             {title: 'Adjective', state: this.state.adjTwo, name: 'adjTwo'},
-            {title: 'Noun', state: this.state.nounOne, name: 'nounONe'},
+            {title: 'Noun', state: this.state.nounOne, name: 'nounOne'},
             {title: 'Number', state: this.state.numberOne, name: 'numberOne'},
             {title: 'Number', state: this.state.numberTwo, name: 'numberTwo'},
 
@@ -57,11 +64,18 @@ class Card extends Component {
 
         ]
         return (
-            <div className="card">
+            <form onSubmit={this.handleFormSubmit} className="card">
+                <div className="card__inputs">
                 {
                     inputData.map(data => Input( (data), this.handleInputChange))
                 }
-            </div> 
+                </div>
+                <button type="submit">{!this.state.contentVisible ? 'Generate Mad Lib' : 'Clar Form'}</button>
+                {
+                    this.state.contentVisible ? <Content data={this.state}/> : ''
+                }
+                
+            </form> 
         )
     }
 }
