@@ -67,8 +67,13 @@
     &__inputs {
         // background-color: skyblue;
         display: grid;
-        grid-template-rows: repeat(4, 1fr);
+        grid-template-rows: repeat(4, 27px);
         grid-template-columns: repeat(4, 1fr);
+
+        grid-row-gap: 120px;
+        margin-top: 66px;
+        margin-left: 83px;
+        margin-right: 83px;
 
         justify-items: center;
         align-items: center;
@@ -82,11 +87,13 @@
 
     font-family: 'Montserrat';
     text-align: center;
+    grid-column-gap: 8px;
+
+    hight: 47px;
 
     &__title {
         grid-column: input-s/input-e; 
 
-        border-top: 1px solid #B3B3B3;
         color: #B3B3B3;
         font-size: 12px;
         font-weight: 300;
@@ -99,6 +106,14 @@
         border: none;
         font-size: 15px;
         text-align: center;
+        padding: 4px 0;
+        border-bottom: 1px solid #B3B3B3;
+        transition: all .3s ease;
+
+        &:focus {
+            outline: none;
+            border-bottom: 1px solid #00CB79;
+        }
         // width: 190px;
         // height: 40px;
     }
