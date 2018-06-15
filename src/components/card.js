@@ -3,30 +3,32 @@ import React, { Component } from 'react';
 import Input from './input';
 import Content from './content';
 
+const INITIAL_STATE = {
+    color: '',
+    pluralNoun: '',
+    adjOne: '',
+    celebOne: '',
+    adjTwo: '',
+    nounOne: '',
+    numberOne: '',
+    numberTwo: '',
+    nounTwo: '',
+    adjThree: '',
+    celebTwo: '',
+    celebThree: '',
+    adjFour: '',
+    nounThree: '',
+    celebFour: '',
+    adjFive: '',
+    contentVisible: false
+}
+
 class Card extends Component {
 
     constructor() {
         super()
 
-        this.state = {
-            color: '',
-            pluralNoun: '',
-            adjOne: '',
-            celebOne: '',
-            adjTwo: '',
-            nounOne: '',
-            numberOne: '',
-            numberTwo: '',
-            nounTwo: '',
-            adjThree: '',
-            celebTwo: '',
-            celebThree: '',
-            adjFour: '',
-            nounThree: '',
-            celebFour: '',
-            adjFive: '',
-            contentVisible: false
-        }
+        this.state = INITIAL_STATE;
 
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -38,8 +40,14 @@ class Card extends Component {
 
     handleFormSubmit(event) {
         event.preventDefault()
-        this.setState({ contentVisible: !this.state.contentVisible })
+        
+        if(this.state.contentVisible) {
+            this.setState(INITIAL_STATE)
+        } else { 
+            this.setState({contentVisible: true})   
+        }
     }
+
     render() { 
         const inputData = [
             {title: 'Color', state: this.state.color, name: 'color'},
