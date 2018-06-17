@@ -83,6 +83,7 @@
     display: grid;
     grid-template-rows: 1fr 50px;
     background-color: white;
+    
     &__inputs {
         // background-color: skyblue;
         display: grid;
@@ -104,16 +105,18 @@
 
     button {
         justify-self: center;
-        transform: translateY(50%);
     }
 
     &__generate {
         background-color: #00CB79;
+        transform: translateY(-300px);
+
         @include button;
 
     }
     
     &__clear {
+        transform: translateY(50%);
         background-color: #4BB0E5;
         @include button;
     }
